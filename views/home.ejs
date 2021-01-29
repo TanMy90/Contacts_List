@@ -3,8 +3,38 @@
         <title>
                 <%= title %>
         </title>
+        <link rel="stylesheet" href="/css/home.css">
+        <script src="https://use.fontawesome.com/326f4466cf.js"></script>
+        <script src="https://kit.fontawesome.com/3317dad89a.js" crossorigin="anonymous"></script>
     </head>
     <body>
-            <h1>EJS Rendering</h1>
+            <h1 id="page-heading"> <i class="fas fa-address-book"></i> Contact List</h1>
+
+            <div class="main">
+                <div>
+                    <ul>
+                        <% for(let i of contact_list) { %>
+                            <li>
+                                <p id="li_name"><%= i.name%></p>
+                                <p id="li_phone"><%= i.phone%></p>
+                            </li>
+                        <% } %>
+                    </ul>
+                </div>
+    
+                <form action="/create-contact" method="POST">
+                    <input type="text" name='name' placeholder="Enter your Name" required>
+                    <input type="number" name='phone' placeholder="phone no" required>
+    
+                    <button type="submit"> Add Contact</button>
+                </form>
+    
+            </div>
+            
+
+            <script type="text/javascript" src="/js/home.js">
+
+            </script>
+
     </body>
 </html>
