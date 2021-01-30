@@ -4,31 +4,34 @@
                 <%= title %>
         </title>
         <link rel="stylesheet" href="/css/home.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <script src="https://use.fontawesome.com/326f4466cf.js"></script>
         <script src="https://kit.fontawesome.com/3317dad89a.js" crossorigin="anonymous"></script>
     </head>
     <body>
-            <h1 id="page-heading"> <i class="fas fa-address-book"></i> Contact List</h1>
+            <h1 class="text-center"> <i class="fas fa-address-book"></i> Contact List</h1>
 
-            <div class="main">
-                <div>
-                    <ul>
-                        <% for(let i of contact_list) { %>
-                            <li>
-                                <p id="li_name"><%= i.name%></p>
-                                <p id="li_phone"><%= i.phone%></p>
-                            </li>
-                        <% } %>
-                    </ul>
+            <div class="col-md-8 offset-md-2 d-flex justify-content-center main">
+                <div class="container">
+                    <div class="row  d-flex justify-content-center">
+                        <ul class="list-group">
+                            <% for(let i of contact_list) { %>
+                                <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: rgb(127, 127, 224);">
+                                    <p class="t-center"><%= i.name%></p>
+                                    <p class="t-center"><%= i.phone%></p>
+                                </li>
+                            <% } %>
+                        </ul>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <form action="/create-contact" method="POST">
+                            <input type="text" name='name' placeholder="Enter your Name" required>
+                            <input type="number" name='phone' placeholder="phone no" required>
+            
+                            <button type="submit" class="btn btn-primary"> Add Contact</button>
+                        </form>
+                    </div>
                 </div>
-    
-                <form action="/create-contact" method="POST">
-                    <input type="text" name='name' placeholder="Enter your Name" required>
-                    <input type="number" name='phone' placeholder="phone no" required>
-    
-                    <button type="submit"> Add Contact</button>
-                </form>
-    
             </div>
             
 
